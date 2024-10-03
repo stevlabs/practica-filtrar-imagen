@@ -1,3 +1,5 @@
+/* VARIABLES */
+
 /* Array galeria de imagenes */
 const arrFotosViajes = [
     { 
@@ -50,8 +52,10 @@ const arrFotosViajes = [
         tags: ['mar', 'edificio', 'arena', 'señales'] 
     }
 ];
+ 
+/* EVENTOS */
 
-/* Funciones */
+/* FUNCIONES */
 
 /* Funcion para obtener los tags del array arrFotosViajes, se 
 devuelve un array con los valores unicos*/
@@ -70,7 +74,7 @@ const obtenerTagsUnicos = () => {
     return tagsUnicos;
 };
 
-/**/
+/* Funcoin para crear y añadir botones al contenedor .botones-container */
 const pintarBotones = () => {
 
     // Creamos un fragmento
@@ -93,4 +97,5 @@ const pintarBotones = () => {
     botonesContainer.append(fragmento);
 };
 
+/* INVOCACIOENS */
 pintarBotones();

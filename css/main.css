@@ -14,14 +14,37 @@ predeterminados de los navegadores */
 }
 
 .header {
-    text-align: center;
     color: aliceblue;
     background-color: rgba(33,37,41,255);
+    text-align: center;
     padding: 20px;
 }
 
 .main {
-    padding: 20px;
+    margin: 0 30px;
     flex-grow: 1; /* permite que ocupe todo el espacio posible, valor defecto 0*/
 }
 
+.filtros {
+    text-align: center;
+}
+
+.filtros header {
+    margin: 15px;
+}
+
+.botones-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.botones-container button {
+    color: aliceblue;
+    background-color: rgba(33,37,41,255);
+    border: 2px solid rgba(33,37,41,255);
+    border-radius: 5px; 
+    padding: 5px 10px;
+    margin-bottom: 10px;
+}
