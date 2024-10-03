@@ -19,3 +19,9 @@ predeterminados de los navegadores */
     background-color: rgba(33,37,41,255);
     padding: 20px;
 }
+
+.main {
+    padding: 20px;
+    flex-grow: 1; /* permite que ocupe todo el espacio posible, valor defecto 0*/
+}
+
