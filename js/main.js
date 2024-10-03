@@ -55,6 +55,7 @@ const arrFotosViajes = [
 
 // Elemento padre de los botones
 const botonesContainer = document.querySelector(".botones-container");
+const galeriaContainer = document.querySelector(".galeria");
 
 /* EVENTOS */
 
@@ -73,6 +74,29 @@ botonesContainer.addEventListener("click", (event) => {
 
         // Pintar las imagenes
         pintarFotosFiltradas(textoTag);
+    }
+});
+
+// Evento de click en la imagen la galeria
+galeriaContainer.addEventListener("click", (event) => {
+    // Verifica si el elemento clickeado es un boton
+    if (event.target.tagName === "IMG") {
+        //console.log("Pulsando la imagen");
+        // Obtenemos el figure de la imagen principal
+        const imagenPrincipalFigure= document.querySelector(".imagen-pricipal figure");
+        // Obtenemos el figure de la imagen clickeada
+        // Busca el ancestro más cercano
+        const imagenSeleccionadaFigure = event.target.closest("figure");
+
+        // copia del elemento figure seleccionado
+        // true = copia todos los hijos
+        const imagenAntigua = imagenPrincipalFigure.cloneNode(true);
+
+        // Cambiar la imagen principal por la imagen seleccionada
+        imagenPrincipalFigure.innerHTML = imagenSeleccionadaFigure.innerHTML;
+
+        // Cambiamos el figure seleccionado por la imagen antigua
+        imagenSeleccionadaFigure.innerHTML = imagenAntigua.innerHTML;
     }
 });
 
