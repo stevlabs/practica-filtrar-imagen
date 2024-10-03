@@ -1,0 +1,21 @@
+/* Selector universal para "resetear" estilos
+predeterminados de los navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.flex-container {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    /*height: 100vh;*/
+}
+
+.header {
+    text-align: center;
+    color: aliceblue;
+    background-color: rgba(33,37,41,255);
+    padding: 20px;
+}
