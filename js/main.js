@@ -21,7 +21,7 @@ const arrFotosViajes = [
         alt: 'Alt 3', 
         title: 'Title 3', 
         descripcion: 'Titulo del viaje 3',
-        tags: ['mar', 'señales'] 
+        tags: ['señales'] 
     },
     { 
         src: 'assets/fotos-viajes/viaje-4.jpg', 
@@ -35,7 +35,7 @@ const arrFotosViajes = [
         alt: 'Alt 5', 
         title: 'Title 5', 
         descripcion: 'Titulo del viaje 5',
-        tags: ['mar', 'edificio', 'señales'] 
+        tags: ['mar', 'señales'] 
     },
     { 
         src: 'assets/fotos-viajes/viaje-6.jpg', 
@@ -49,21 +49,93 @@ const arrFotosViajes = [
         alt: 'Alt 7', 
         title: 'Title 7', 
         descripcion: 'Titulo del viaje 7',
-        tags: ['mar', 'edificio', 'arena', 'señales'] 
+        tags: ['mar', 'señales'] 
     }
 ];
- 
+
+// Elemento padre de los botones
+const botonesContainer = document.querySelector(".botones-container");
+
 /* EVENTOS */
+
+// Evento de click en el contenedor de los botones
+botonesContainer.addEventListener("click", (event) => {
+    // Verifica si el elemento clickeado es un boton
+    if (event.target.tagName === "BUTTON") {
+        // Obtenemos el texto del boton clickeado
+        const textoTag = event.target.innerText;
+        // console.log(`Boton clickeado: ${textoBoton}`);
+        // console.log(cuantosTags(textoBoton));
+        const cantidad = cuantosTags(textoTag).length;
+        // Actualizar el texto de resultado
+        const resultado = document.querySelector("#resultado-filtro");
+        resultado.innerHTML = `Se han encontrado <strong>${cantidad}</strong> imágenes con el tag <strong>${textoTag}</strong>`
+
+        // Pintar las imagenes
+        pintarFotosFiltradas(textoTag);
+    }
+});
 
 /* FUNCIONES */
 
-/* Funcion para obtener los tags del array arrFotosViajes, se 
-devuelve un array con los valores unicos*/
-const obtenerTagsUnicos = () => {
+/* Funcion para devolver el array con las imagens filtradas que contenga el parametro tag*/
+const filtrarImagenPorTag = (tag) => {
+    return arrFotosViajes.filter((item) => item.tags.includes(tag)); 
+};
+
+const pintarFotosFiltradas = (tag) => {
+    // Creamos un fragmento
+    const fragmento = document.createDocumentFragment();
+
+    // Obtenemos el contenedor donde iran los botones
+    const imagenPrincipal = document.querySelector(".imagen-pricipal");
+    const imagenesRestantes = document.querySelector(".imagen-relacionadas");
+    
+    imagenPrincipal.innerHTML = '';
+    imagenesRestantes.innerHTML = '';
+
+    filtrarImagenPorTag(tag).forEach((item, index) => {
+        // Crear elemento FIGURE IMG FIGCAPTION
+        const caja = document.createElement("FIGURE");
+        const imagen = document.createElement("IMG");
+        const titulo = document.createElement("FIGCAPTION");
+
+        // Añadimos los atributos a las imagenes
+        imagen.src = item.src;
+        imagen.alt = item.alt;
+        imagen.title = item.title;
+        // Añadimos el texto al titulo
+        titulo.textContent = item.descripcion;
+
+        // Añadimos el titulo y la imagen a la caja
+        caja.append(titulo, imagen);
+
+        // Añadimos al fragmento cuando no sea el indice 0
+        index === 0 ? imagenPrincipal.append(caja) : fragmento.append(caja);
+        
+    });
+
+    imagenesRestantes.append(fragmento);
+
+};
+
+/* Funcion para obtener los tags del array arrFotosViajes */
+const obtenerTodosLosTags = () => {
     // .map() para obtener un array de arrays de tags
     // Aplanamos el array todosLosTags ya que esta en depth 2 (profundidad 2)
-    const todosLosTags = arrFotosViajes.map((item) => item.tags).flat(); 
+    return arrFotosViajes.map((item) => item.tags).flat(); 
     //console.log(todosLosTags);
+};
+
+/* Funcion para ver cuantas imagenes con el mismo tag hay */
+const cuantosTags = (tag) => {
+    return obtenerTodosLosTags().filter((item) => item === tag);
+};
+
+/* Funcion para devolver un array con los tags unicos*/
+const obtenerTagsUnicos = () => {
+
+    const todosLosTags = obtenerTodosLosTags();
 
     // Filtramos el array todosLosTags para guardar solo los valores unicos
     const tagsUnicos = todosLosTags.filter((item, index) => 

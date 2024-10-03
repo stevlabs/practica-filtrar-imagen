@@ -10,7 +10,7 @@ predeterminados de los navegadores */
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
-    /*height: 100vh;*/
+    height: 100vh; /* Contenedor tiene la altura de la ventana */
 }
 
 .header {
@@ -21,16 +21,21 @@ predeterminados de los navegadores */
 }
 
 .main {
-    margin: 0 30px;
     flex-grow: 1; /* permite que ocupe todo el espacio posible, valor defecto 0*/
+    width: 100%;
 }
 
 .filtros {
+    margin: 0 30px;
     text-align: center;
 }
 
 .filtros header {
     margin: 5px 0px 30px 0px;
+}
+
+.filtros p {
+    text-align: left;
 }
 
 .botones-container {
@@ -40,6 +45,10 @@ predeterminados de los navegadores */
     gap: 10px;
 }
 
+#resultado-filtro{
+    margin-top: 20px;
+}
+
 .botones-container button {
     color: aliceblue;
     background-color: rgba(33,37,41,255);
@@ -47,4 +56,61 @@ predeterminados de los navegadores */
     border-radius: 5px; 
     padding: 5px 10px;
     margin-bottom: 10px;
+}
+
+.galeria {
+    margin: 0 30px;
+}
+
+.imagen-pricipal {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.imagen-pricipal figure img {
+    width: 100%;
+}
+
+.imagen-relacionadas {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+}
+
+.imagen-relacionadas figure {
+    width: 45%;
+}
+
+.imagen-relacionadas img {
+    width: 100%;
+}
+
+
+.footer {
+    color: aliceblue;
+    background-color: rgba(33,37,41,255);
+    text-align: center;
+    gap: 10px;
+}
+
+/*  ====================================== 
+                    768px
+    ====================================== */
+@media screen and (min-width: 768px) {
+    /*
+    .main > section {
+        width: 50%;
+    }*/
+}
+
+/*  ====================================== 
+                    1200px
+    ====================================== */
+@media screen and (min-width: 1200px) {
+    /*
+    .main > section {
+        width: 33.3%;
+    }
+    */
 }
